@@ -1,8 +1,8 @@
 package chardet
 
 import (
-	"code.google.com/p/go.text/transform"
 	. "unicode/utf8"
+	"golang.org/x/text/transform"
 )
 
 // 提供给用户使用的并发安全的编解码器接口
@@ -18,7 +18,7 @@ type u32bt8 struct {
 // UTF-16BE => UTF-8
 func (u *u32bt8) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err error) {
 	ld, ls := len(dst), len(src)
-	us := []rune{}
+	var us []rune
 	for nSrc < ls {
 		if nSrc+3 >= ls {
 			if !atEOF {
@@ -63,7 +63,7 @@ type u32lt8 struct {
 // UTF-16BE => UTF-8
 func (u *u32lt8) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err error) {
 	ld, ls := len(dst), len(src)
-	us := []rune{}
+	var us []rune
 	for nSrc < ls {
 		if nSrc+3 >= ls {
 			if !atEOF {
@@ -108,7 +108,7 @@ type u8t32b struct {
 // UTF-8 => UTF-16BE
 func (u *u8t32b) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err error) {
 	ld, ls := len(dst), len(src)
-	rs := []rune{}
+	var rs []rune
 	for nSrc < ls {
 		r, n := DecodeRune(src[nSrc:])
 		if n == 1 && r == 0xFFFD {
@@ -150,7 +150,7 @@ type u8t32l struct {
 // UTF-8 => UTF-16BE
 func (u *u8t32l) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err error) {
 	ld, ls := len(dst), len(src)
-	rs := []rune{}
+	var rs []rune
 	for nSrc < ls {
 		r, n := DecodeRune(src[nSrc:])
 		if n == 1 && r == 0xFFFD {
