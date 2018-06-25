@@ -14,7 +14,7 @@ func (u utf8) String() string {
 
 func (u *utf8) Feed(x byte) bool {
 	if u.byte == 0 {
-		if x >= 0x00 && x <= 0x7F {
+		if x <= 0x7F {
 			return true
 		}
 		if x >= 0xC0 && x <= 0xDF {
@@ -55,7 +55,7 @@ func (u utf16BE) String() string {
 func (u *utf16BE) Feed(x byte) bool {
 	switch u.byte {
 	case 0:
-		if (x >= 0x00 && x <= 0xD7) || (x >= 0xE0 && x <= 0xFF) {
+		if (x <= 0xD7) || (x >= 0xE0) {
 			u.byte = 1
 			return true
 		}
@@ -98,7 +98,7 @@ func (u *utf16LE) Feed(x byte) bool {
 		u.byte = 1
 		return true
 	case 1:
-		if (x >= 0x00 && x <= 0xD7) || (x >= 0xE0 && x <= 0xFF) {
+		if (x <= 0xD7) || (x >= 0xE0) {
 			u.byte = 0
 			return true
 		}
@@ -139,7 +139,7 @@ func (u *utf32BE) Feed(x byte) bool {
 			return true
 		}
 	case 1:
-		if x >= 0x00 && x <= 0x1F {
+		if x <= 0x1F {
 			u.byte = 2
 			return true
 		}
@@ -175,7 +175,7 @@ func (u *utf32LE) Feed(x byte) bool {
 		u.byte = 2
 		return true
 	case 2:
-		if x >= 0x00 && x <= 0x1F {
+		if x <= 0x1F {
 			u.byte = 3
 			return true
 		}

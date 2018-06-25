@@ -74,7 +74,7 @@ func (i *iso2022JP) Feed(x byte) bool {
 		}
 		switch i.byte >> 4 {
 		case 0:
-			if (x >= 0x00 && x <= 0x7F) || (x >= 0xA1 && x <= 0xDF) {
+			if (x <= 0x7F) || (x >= 0xA1 && x <= 0xDF) {
 				return true
 			}
 		case 1:

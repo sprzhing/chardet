@@ -70,7 +70,7 @@ func (e eucKR) String() string {
 
 func (e *eucKR) Feed(x byte) bool {
 	if e.byte == 0 {
-		if x >= 0x00 && x <= 0x7F {
+		if x <= 0x7F {
 			return true
 		}
 		if x >= 0xA1 && x <= 0xFE {

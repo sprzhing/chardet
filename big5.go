@@ -98,7 +98,7 @@ func (b big5) String() string {
 
 func (b *big5) Feed(x byte) (ans bool) {
 	if b.byte == 0 {
-		if x >= 0x00 && x <= 0x7F {
+		if x <= 0x7F {
 			return true
 		}
 		if x >= 0xA1 && x <= 0xF9 {

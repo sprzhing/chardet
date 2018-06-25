@@ -18,7 +18,7 @@ func (h *hzgb2312) Feed(x byte) bool {
 			h.byte = 1
 			return true
 		}
-		if x >= 0x00 && x <= 0x7F {
+		if x <= 0x7F {
 			return true
 		}
 	case 1:

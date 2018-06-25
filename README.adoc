@@ -1,5 +1,4 @@
-chardet
-=======
+= chardet
 
 detect text encoding, like python chardet, but for go
 

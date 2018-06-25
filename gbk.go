@@ -98,7 +98,7 @@ func (g gbk) String() string {
 
 func (g *gbk) Feed(x byte) (ans bool) {
 	if g.byte == 0 {
-		if x >= 0x00 && x <= 0x7F {
+		if x <= 0x7F {
 			return true
 		}
 		if x >= 0x81 && x <= 0xFE {
@@ -154,7 +154,7 @@ func (g gb18030) String() string {
 func (g *gb18030) Feed(x byte) bool {
 	switch g.byte {
 	case 0:
-		if x >= 0x00 && x <= 0x7F {
+		if x <= 0x7F {
 			return true
 		}
 		if x >= 0x81 && x <= 0xFE {

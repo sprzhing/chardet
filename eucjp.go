@@ -73,7 +73,7 @@ func (e eucJP) String() string {
 func (e *eucJP) Feed(x byte) bool {
 	switch e.byte {
 	case 0:
-		if x >= 0x00 && x <= 0x7F {
+		if x <= 0x7F {
 			return true
 		}
 		if x >= 0xA1 && x <= 0xFE {
