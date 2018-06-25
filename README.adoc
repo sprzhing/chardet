@@ -34,6 +34,7 @@ Possible函数会返回全部可能的编码格式，utf-8格式优先于其他u
 
 各编码格式对应字符串如下
 
+
 * **UTF8**  "utf-8"
 * **UTF16 Big-Ending** "utf-16be"
 * **UTF16 Little-Ending** "utf-16le"
