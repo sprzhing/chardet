@@ -1,11 +1,19 @@
 package chardet
 
-import "sort"
+import (
+	"sort"
+
+	"golang.org/x/text/encoding"
+)
 
 type detect interface {
 	String() string
 	Feed(byte) bool
 	Priority() float64
+}
+
+type result struct {
+	e encoding.Encoding
 }
 
 func check(data []byte, lst []detect) []detect {
