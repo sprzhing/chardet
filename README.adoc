@@ -20,18 +20,18 @@ detect text encoding, like python chardet, but for go
 // 函数如果无法探测到编码格式，会返回空字符串。
 // 如果发现该文本符合多个编码格式，会优先返回utf-8格式
 // 否则会进一步检测字符分布，返回最匹配的。
-func Mostlike([]byte) string
+func Mostlike([]byte) string {...}
 
 // 本函数返回文本所有可能的编码格式，可能性越高越靠前
 // 函数会返回全部可能的编码格式，utf-8格式优先于其他unicode格式；
 // 会根据字符分布来排布各个格式，使可能性越高的越靠前。
-func Possible([]byte) []string
+func Possible([]byte) []string {...}
 
 // 用于解码从r读取的文本
-func NewReader(r io.Reader, codec string, data []byte) (io.Reader, error)
+func NewReader(r io.Reader, codec string, data []byte) (io.Reader, error) {...}
 
 // 用于将文本编码后写入w
-func NeWriter(w io.Writer, codec string, bom bool) (io.Writer, error)
+func NeWriter(w io.Writer, codec string, bom bool) (io.Writer, error) {...}
 ----
 
 .编码格式对应表
